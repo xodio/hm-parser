@@ -4,15 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src/ -d dist/ && nearleyc src/hm.ne -o dist/grammar.js",
+    "test": "tape test/test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nearley": "^2.7.12"
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-preset-es2015": "^6.22.0",
+    "tape": "^4.6.3"
   },
   "dependencies": {
+    "nearley": "^2.7.12",
     "ramda": "^0.23.0"
   }
 }
