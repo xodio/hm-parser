@@ -378,12 +378,12 @@ Tape.test('typeConstructor', t => {
       {type: 'typevar', text: 'a', children: []},
       {type: 'constrainedType', text: 'f', children: [
         {type: 'typevar', text: 'b', children: []}]}]});
-
+  */
   t.deepEqual(HMP.typeConstructor('Either a b'),
     {type: 'typeConstructor', text: 'Either', children: [
       {type: 'typevar', text: 'a', children: []},
       {type: 'typevar', text: 'b', children: []}]});
-  */
+  
   t.deepEqual(HMP.typeConstructor('Maybe a'),
     {type: 'typeConstructor', text: 'Maybe', children: [
       {type: 'typevar', text: 'a', children: []}]});

@@ -40,10 +40,10 @@ capId -> [A-Z] [a-zA-Z0-9_]:* {%
   data => data[0] + R.join('', data[1])
 %}
 
-typeConstructor -> capId (__ typevar):? {%
+typeConstructor -> capId (__ typevar):* {%
   data => ({
     type: 'typeConstructor',
     text: data[0],
-    children: R.reject(R.isNil, [ R.path([1, 1])(data) ]),
+    children: R.pluck(1)(data[1]),
   })
 %}
