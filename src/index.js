@@ -1,6 +1,12 @@
 
+import R from 'ramda';
 import nearley from 'nearley';
 import grammar from './grammar';
+
+const defaultize = R.merge({
+  children: [],
+  text: '',
+});
 
 export function typeConstructor(s) {
   const parser = new nearley.Parser(
@@ -10,5 +16,5 @@ export function typeConstructor(s) {
 
   parser.feed(s);
 
-  return parser.results;
+  return defaultize(parser.results[0]);
 }

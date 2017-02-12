@@ -25,6 +25,7 @@ typevar -> [a-z] {%
   data => ({
     type: 'typevar',
     text: data[0],
+    children: [],
   })
 %}
 
@@ -35,9 +36,14 @@ name -> [a-zA-Z0-9_]:+ {%
   })
 %}
 
-typeConstructor -> [A-Z] [a-zA-Z0-9_]:* {%
+capId -> [A-Z] [a-zA-Z0-9_]:* {%
+  data => data[0] + R.join('', data[1])
+%}
+
+typeConstructor -> capId (__ typevar):? {%
   data => ({
     type: 'typeConstructor',
-    name: R.compose(R.join(''), R.flatten)(data),
+    text: data[0],
+    children: R.reject(R.isNil, [ R.path([1, 1])(data) ]),
   })
 %}
