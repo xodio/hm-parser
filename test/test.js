@@ -151,7 +151,7 @@ Tape.test('parse', t => {
 
   t.end();
 });
-
+*/
 Tape.test('name', t => {
   t.deepEqual(HMP.name('foo'), 'foo');
   t.deepEqual(HMP.name('foo\''), 'foo\'');
@@ -159,7 +159,7 @@ Tape.test('name', t => {
 
   t.end();
 });
-
+/*
 Tape.test('classConstraints', t => {
   t.deepEqual(HMP.classConstraints('(Eq a, Foo b, Bar b)'), [
     {typeclass: 'Eq', typevar: 'a'},

@@ -27,6 +27,10 @@ capId -> [A-Z] [a-zA-Z0-9_]:* {%
   data => data[0] + R.join('', data[1])
 %}
 
+# Name ========================================================================
+
+name -> [A-Za-z0-9_'#@-]:+ {% data => R.join('', data[0]) %}
+
 # Type constructor ============================================================
 
 typeConstructor -> capId (__ typeConstructorArg):* {%
