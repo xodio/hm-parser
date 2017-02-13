@@ -5,9 +5,10 @@
 %}
 
 type ->
-    typevar
+  ( typevar
   | list
-  | typeConstructor {% data => data[0] %}
+  | typeConstructor
+  ) {% data => data[0][0] %}
 
 typevar -> lowId {%
   data => ({
@@ -31,19 +32,16 @@ typeConstructor -> capId (__ typeConstructorArg):* {%
   data => ({
     type: 'typeConstructor',
     text: data[0],
-    children: R.compose(
-      R.flatten,
-      R.pluck(1),
-      R.prop(1)
-    )(data),
+    children: R.pluck(1)(data[1]),
   })
 %}
 
 typeConstructorArg ->
-    typevar
+  ( typevar
   | wrappedConstrainedType
   | nullaryTypeConstructor
-  | wrappedTypeConstructor {% data => data[0] %}
+  | wrappedTypeConstructor
+  ) {% data => data[0][0] %}
 
 nullaryTypeConstructor -> capId {%
   data => ({
@@ -58,20 +56,17 @@ wrappedTypeConstructor -> "(" _ typeConstructor _ ")" {% data => data[2] %}
 # Constrained type ============================================================
 
 constrainedTypeArg ->
-    nullaryTypeConstructor
+  ( nullaryTypeConstructor
   | typevar
   | wrappedTypeConstructor
-  | wrappedConstrainedType {% data => data[0] %}
+  | wrappedConstrainedType
+  ) {% data => data[0][0] %}
 
 constrainedType -> lowId (__ constrainedTypeArg):* {%
   data => ({
     type: 'constrainedType',
     text: data[0],
-    children: R.compose(
-      R.flatten,
-      R.pluck(1),
-      R.prop(1)
-    )(data),
+    children: R.pluck(1)(data[1]),
   })
 %}
 
@@ -83,7 +78,7 @@ list -> "[" _ type _ "]" {%
   data => ({
     type: 'list',
     text: '',
-    children: R.flatten([ data[2] ]),
+    children: [ data[2] ],
   })
 %}
 
@@ -93,7 +88,7 @@ function -> functionArg (_ "->" _ functionArg):+ {%
   data => ({
     type: 'function',
     text: '',
-    children: [data[0]].concat(R.unnest(R.pluck(3)(data[1]))),
+    children: [data[0]].concat(R.pluck(3)(data[1])),
   })
 %}
 
