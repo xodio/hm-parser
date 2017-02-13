@@ -23,7 +23,7 @@ Tape.test('parse', t => {
           {type: 'typevar', text: 'a', children: []}]},
         {type: 'typeConstructor', text: 'Integer', children: []}]}
     });
-/*
+
   t.deepEqual(
     HMP.parse('hello :: a -> { x :: String, y :: a }'), {
       name: 'hello',
@@ -53,7 +53,7 @@ Tape.test('parse', t => {
           {type: 'typeConstructor', text: 'Maybe', children: [
             {type: 'typevar', text: 'b', children: []}]}]}
     });
-
+/*
   t.deepEqual(
     HMP.parse('hello :: Foo a => a -> String'), {
       name: 'hello',

@@ -17,6 +17,8 @@ type ->
   | list
   | typeConstructor
   | function
+  | method
+  | record
   ) {% data => data[0][0] %}
 
 typevar -> lowId {%
@@ -132,6 +134,7 @@ functionArg ->
   | typeConstructor
   | constrainedType
   | wrappedFunction
+  | record
   ) {% data => data[0][0] %}
 
 wrappedFunction -> "(" _ function _ ")" {% data => data[2] %}
