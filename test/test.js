@@ -231,7 +231,7 @@ Tape.test('record', t => {
 
   t.end();
 });
-
+*/
 Tape.test('uncurriedFunction', t => {
   t.deepEqual(HMP.uncurriedFunction('(a, b) -> Integer'),
     {type: 'uncurriedFunction', text: '', children: [
@@ -254,7 +254,7 @@ Tape.test('uncurriedFunction', t => {
 
   t.end();
 });
-
+/*
 Tape.test('method', t => {
   t.deepEqual(HMP.method('Foo ~> Integer'),
     {type: 'method', text: '', children: [

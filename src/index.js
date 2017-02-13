@@ -17,3 +17,4 @@ export const typevar = parse('typevar');
 export const constrainedType = parse('constrainedType');
 export const list = parse('list');
 export const fn = parse('function');
+export const uncurriedFunction = parse('uncurriedFunction');

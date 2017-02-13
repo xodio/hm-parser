@@ -102,3 +102,21 @@ functionArg ->
   ) {% data => data[0][0] %}
 
 wrappedFunction -> "(" _ function _ ")" {% data => data[2] %}
+
+# Uncurried function ==========================================================
+
+uncurriedFunction -> uncurriedFunctionParams _ "->" _ type {%
+  data => ({
+    type: 'uncurriedFunction',
+    text: '',
+    children: [data[0], data[4]],
+  })
+%}
+
+uncurriedFunctionParams -> "(" _ type (_ "," _ type):+ _ ")" {%
+  data => ({
+    type: 'parameters',
+    text: '',
+    children: [data[2]].concat(R.pluck(3)(data[3])),
+  })
+%}
