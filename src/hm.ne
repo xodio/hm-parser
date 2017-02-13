@@ -31,6 +31,26 @@ capId -> [A-Z] [a-zA-Z0-9_]:* {%
 
 name -> [A-Za-z0-9_'#@-]:+ {% data => R.join('', data[0]) %}
 
+# Class constraints ===========================================================
+
+classConstraints ->
+  ( constraint
+  | wrappedConstraints
+  ) {% data => data[0][0] %}
+
+constraint -> capId __ lowId {%
+  data => [{
+    typeclass: data[0],
+    typevar: data[2],
+  }]
+%}
+
+wrappedConstraints -> "(" _ constraint (_ "," _ constraint):* _ ")" {%
+  data => data[2].concat(
+    R.unnest(R.pluck(3)(data[3]))
+  )
+%}
+
 # Type constructor ============================================================
 
 typeConstructor -> capId (__ typeConstructorArg):* {%

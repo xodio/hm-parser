@@ -22,3 +22,4 @@ export const method = parse('method');
 export const thunk = parse('thunk');
 export const record = parse('record');
 export const name = parse('name');
+export const classConstraints = parse('classConstraints');
