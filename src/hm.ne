@@ -48,13 +48,18 @@ typeConstructor -> capId (__ typeConstructorArg):* {%
   })
 %}
 
-constrainedType -> lowId __ type (__ type):* {%
+constrainedTypeArg ->
+    nullaryTypeConstructor
+  | typevar {% data => data[0] %}
+
+constrainedType -> lowId (__ constrainedTypeArg):* {%
   data => ({
     type: 'constrainedType',
     text: data[0],
-    children: R.flatten(R.concat(
-      R.of(data[2]),
-      R.pluck(1)(data[3])
-    )),
+    children: R.compose(
+      R.flatten,
+      R.pluck(1),
+      R.prop(1)
+    )(data),
   })
 %}
