@@ -130,3 +130,21 @@ method -> typeConstructor _ "~>" _ functionArg (_ "->" _ functionArg):* {%
     children: [data[0], data[4]].concat(R.pluck(3)(data[5]))
   })
 %}
+
+# Thunk ======================================================================
+
+thunk -> thunkParenthesis (_ "->" _ functionArg):+ {%
+  data => ({
+    type: 'function',
+    text: '',
+    children: [data[0]].concat(R.pluck(3)(data[1])),
+  })
+%}
+
+thunkParenthesis -> "(" _ ")" {%
+  data => ({
+    type: 'thunk',
+    text: '',
+    children: [],
+  })
+%}

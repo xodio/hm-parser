@@ -181,7 +181,7 @@ Tape.test('typevar', t => {
     {type: 'typevar', text: 'a', children: []});
   t.end();
 });
-/*
+
 Tape.test('thunk', t => {
   t.deepEqual(HMP.thunk('() -> Maybe a'),
     {type: 'function', text: '', children: [
@@ -196,7 +196,7 @@ Tape.test('thunk', t => {
 
   t.end();
 });
-*/
+
 Tape.test('constrainedType', t => {
   t.deepEqual(HMP.constrainedType('f a'),
     {type: 'constrainedType', text: 'f', children: [
