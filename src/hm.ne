@@ -24,17 +24,7 @@ capId -> [A-Z] [a-zA-Z0-9_]:* {%
   data => data[0] + R.join('', data[1])
 %}
 
-typeConstructorArg -> typevar | nullaryTypeConstructor {%
-  data => data[0]
-%}
-
-nullaryTypeConstructor -> capId {%
-  data => ({
-    type: 'typeConstructor',
-    text: data[0],
-    children: [],
-  })
-%}
+# Type constructor ============================================================
 
 typeConstructor -> capId (__ typeConstructorArg):* {%
   data => ({
@@ -48,9 +38,29 @@ typeConstructor -> capId (__ typeConstructorArg):* {%
   })
 %}
 
+typeConstructorArg ->
+    typevar
+  | wrappedConstrainedType
+  | nullaryTypeConstructor
+  | wrappedTypeConstructor {% data => data[0] %}
+
+nullaryTypeConstructor -> capId {%
+  data => ({
+    type: 'typeConstructor',
+    text: data[0],
+    children: [],
+  })
+%}
+
+wrappedTypeConstructor -> "(" _ typeConstructor _ ")" {% data => data[2] %}
+
+# Constrained type ============================================================
+
 constrainedTypeArg ->
     nullaryTypeConstructor
-  | typevar {% data => data[0] %}
+  | typevar
+  | wrappedTypeConstructor
+  | wrappedConstrainedType {% data => data[0] %}
 
 constrainedType -> lowId (__ constrainedTypeArg):* {%
   data => ({
@@ -63,3 +73,5 @@ constrainedType -> lowId (__ constrainedTypeArg):* {%
     )(data),
   })
 %}
+
+wrappedConstrainedType -> "(" _ constrainedType _ ")" {% data => data[2] %}
