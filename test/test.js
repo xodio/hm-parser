@@ -270,7 +270,7 @@ Tape.test('method', t => {
 
   t.end();
 });
-
+*/
 Tape.test('function', t => {
   t.deepEqual(HMP.fn('(a -> b) -> [a] -> [b]'),
     {type: 'function', text: '', children: [
@@ -313,7 +313,7 @@ Tape.test('function', t => {
       {type: 'typevar', text: 'b', children: []}]});
   t.end();
 });
-*/
+
 Tape.test('list', t => {
   t.deepEqual(HMP.list('[[Integer]]'),
     {type: 'list', text: '', children: [

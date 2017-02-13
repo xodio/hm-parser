@@ -86,3 +86,23 @@ list -> "[" _ type _ "]" {%
     children: R.flatten([ data[2] ]),
   })
 %}
+
+# Function ====================================================================
+
+function -> functionArg (_ "->" _ functionArg):+ {%
+  data => ({
+    type: 'function',
+    text: '',
+    children: [data[0]].concat(R.unnest(R.pluck(3)(data[1]))),
+  })
+%}
+
+functionArg ->
+  ( typevar
+  | list
+  | typeConstructor
+  | constrainedType
+  | wrappedFunction
+  ) {% data => data[0][0] %}
+
+wrappedFunction -> "(" _ function _ ")" {% data => data[2] %}

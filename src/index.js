@@ -16,3 +16,4 @@ export const typeConstructor = parse('typeConstructor');
 export const typevar = parse('typevar');
 export const constrainedType = parse('constrainedType');
 export const list = parse('list');
+export const fn = parse('function');
