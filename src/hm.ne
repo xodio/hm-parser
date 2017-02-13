@@ -134,6 +134,7 @@ functionArg ->
   | typeConstructor
   | constrainedType
   | wrappedFunction
+  | wrappedUncurriedFunction
   | record
   ) {% data => data[0][0] %}
 
@@ -156,6 +157,8 @@ uncurriedFunctionParams -> "(" _ type (_ "," _ type):+ _ ")" {%
     children: [data[2]].concat(R.pluck(3)(data[3])),
   })
 %}
+
+wrappedUncurriedFunction -> "(" _ uncurriedFunction _ ")" {% data => data[2] %}
 
 # Method ======================================================================
 

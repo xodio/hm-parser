@@ -63,7 +63,7 @@ Tape.test('parse', t => {
       {type: 'function', text: '', children: [
         {type: 'typevar', text: 'a', children: []},
         {type: 'typeConstructor', text: 'String', children: []}]}});
-/*
+
   t.deepEqual(
     HMP.parse('reduce_ :: Foldable f => ((a, b) -> a) -> a -> f b -> a'), {
       name: 'reduce_',
@@ -111,7 +111,7 @@ Tape.test('parse', t => {
         {type: 'constrainedType', text: 'f', children: [
           {type: 'typeConstructor', text: 'FiniteNumber', children: []}]},
         {type: 'typeConstructor', text: 'FiniteNumber', children: []}]}});
-
+/*
   t.deepEqual(
     HMP.parse('promap :: Profunctor p => (a -> b, c -> d, p b c) -> p a d'), {
       name: 'promap',
