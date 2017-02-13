@@ -339,7 +339,7 @@ Tape.test('list', t => {
 });
 */
 Tape.test('typeConstructor', t => {
-  /*t.deepEqual(HMP.typeConstructor('Maybe (Either a (Maybe b))'),
+  t.deepEqual(HMP.typeConstructor('Maybe (Either a (Maybe b))'),
     {type: 'typeConstructor', text: 'Maybe', children: [
       {type: 'typeConstructor', text: 'Either', children: [
         {type: 'typevar', text: 'a', children: []},
@@ -356,7 +356,7 @@ Tape.test('typeConstructor', t => {
     {type: 'typeConstructor', text: 'Maybe', children: [
       {type: 'constrainedType', text: 'f', children: [
         {type: 'typevar', text: 'a', children: []}]}]});
-  */
+  
   t.deepEqual(HMP.typeConstructor('Maybe Integer'),
     {type: 'typeConstructor', text: 'Maybe', children: [
       {type: 'typeConstructor', text: 'Integer', children: []}]});
@@ -365,14 +365,14 @@ Tape.test('typeConstructor', t => {
     {type: 'typeConstructor', text: 'Either', children: [
       {type: 'typeConstructor', text: 'Integer', children: []},
       {type: 'typeConstructor', text: 'Bool', children: []}]});
-  /*
+  
   t.deepEqual(HMP.typeConstructor('Triple a (Maybe Bool) Integer'),
     {type: 'typeConstructor', text: 'Triple', children: [
       {type: 'typevar', text: 'a', children: []},
       {type: 'typeConstructor', text: 'Maybe', children: [
         {type: 'typeConstructor', text: 'Bool', children: []}]},
       {type: 'typeConstructor', text: 'Integer', children: []}]});
-  */
+
   t.deepEqual(HMP.typeConstructor('Either a (f b)'),
     {type: 'typeConstructor', text: 'Either', children: [
       {type: 'typevar', text: 'a', children: []},
