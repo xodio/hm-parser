@@ -4,24 +4,11 @@
   const R = require('ramda');
 %}
 
-signature -> name _ "::" _ rootType
-
-rootType ->
-    function
-  | type
-
 type ->
     typevar
-  | typeConstructor
+  | typeConstructor {% data => data[0] %}
 
-function -> type (_ "->" _ type):+ {%
-  data => ({
-    type: 'function',
-    children: data,
-  })
-%}
-
-typevar -> [a-z] {%
+typevar -> lowId {%
   data => ({
     type: 'typevar',
     text: data[0],
@@ -29,18 +16,17 @@ typevar -> [a-z] {%
   })
 %}
 
-name -> [a-zA-Z0-9_]:+ {%
-  data => ({
-    type: 'name',
-    name: R.compose(R.join(''), R.flatten)(data),
-  })
+lowId -> [a-z] [a-zA-Z0-9_]:* {%
+  data => data[0] + R.join('', data[1])
 %}
 
 capId -> [A-Z] [a-zA-Z0-9_]:* {%
   data => data[0] + R.join('', data[1])
 %}
 
-typeConstructorArg -> typevar | nullaryTypeConstructor
+typeConstructorArg -> typevar | nullaryTypeConstructor {%
+  data => data[0]
+%}
 
 nullaryTypeConstructor -> capId {%
   data => ({
@@ -55,9 +41,20 @@ typeConstructor -> capId (__ typeConstructorArg):* {%
     type: 'typeConstructor',
     text: data[0],
     children: R.compose(
-      R.pluck(0),
+      R.flatten,
       R.pluck(1),
       R.prop(1)
     )(data),
+  })
+%}
+
+constrainedType -> lowId __ type (__ type):* {%
+  data => ({
+    type: 'constrainedType',
+    text: data[0],
+    children: R.flatten(R.concat(
+      R.of(data[2]),
+      R.pluck(1)(data[3])
+    )),
   })
 %}

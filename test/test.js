@@ -196,7 +196,7 @@ Tape.test('thunk', t => {
 
   t.end();
 });
-
+*/
 Tape.test('constrainedType', t => {
   t.deepEqual(HMP.constrainedType('f a'),
     {type: 'constrainedType', text: 'f', children: [
@@ -213,7 +213,7 @@ Tape.test('constrainedType', t => {
 
   t.end();
 });
-
+/*
 Tape.test('record', t => {
   t.deepEqual(HMP.record('{ foo :: Integer, bar :: Maybe [a] }'),
     {type: 'record', text: '', children: [
