@@ -4,11 +4,11 @@
   const R = require('ramda');
 %}
 
-declaration -> name _ "::" _ type {%
+declaration -> name _ "::" (_ classConstraints _ "=>"):? _ type {%
   data => ({
     name: data[0],
-    constraints: [],
-    type: data[4],
+    constraints: R.pathOr([], [3, 1], data),
+    type: data[5],
   })
 %}
 
