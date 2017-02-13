@@ -17,6 +17,8 @@ type ->
   | list
   | typeConstructor
   | function
+  | uncurriedFunction
+  | constrainedType
   | method
   | record
   ) {% data => data[0][0] %}
@@ -135,6 +137,7 @@ functionArg ->
   | constrainedType
   | wrappedFunction
   | wrappedUncurriedFunction
+  | wrappedThunk
   | record
   ) {% data => data[0][0] %}
 
@@ -187,6 +190,8 @@ thunkParenthesis -> "(" _ ")" {%
     children: [],
   })
 %}
+
+wrappedThunk -> "(" _ thunk _ ")" {% data => data[2] %}
 
 # Record =====================================================================
 

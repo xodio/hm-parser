@@ -111,7 +111,7 @@ Tape.test('parse', t => {
         {type: 'constrainedType', text: 'f', children: [
           {type: 'typeConstructor', text: 'FiniteNumber', children: []}]},
         {type: 'typeConstructor', text: 'FiniteNumber', children: []}]}});
-/*
+
   t.deepEqual(
     HMP.parse('promap :: Profunctor p => (a -> b, c -> d, p b c) -> p a d'), {
       name: 'promap',
@@ -148,7 +148,7 @@ Tape.test('parse', t => {
         {type: 'typeConstructor', text: 'Maybe', children: [
           {type: 'typevar', text: 'a', children: []}]},
         {type: 'typevar', text: 'b', children: []}]}});
-*/
+
   t.end();
 });
 
