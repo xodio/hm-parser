@@ -8,6 +8,7 @@ type ->
   ( typevar
   | list
   | typeConstructor
+  | function
   ) {% data => data[0][0] %}
 
 typevar -> lowId {%

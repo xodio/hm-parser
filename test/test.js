@@ -329,11 +329,11 @@ Tape.test('list', t => {
       {type: 'typeConstructor', text: 'Maybe', children: [
         {type: 'typevar', text: 'a', children: []}]}]});
 
-  /*t.deepEqual(HMP.list('[a -> Bool]'),
+  t.deepEqual(HMP.list('[a -> Bool]'),
     {type: 'list', text: '', children: [
       {type: 'function', text: '', children: [
         {type: 'typevar', text: 'a', children: []},
-        {type: 'typeConstructor', text: 'Bool', children: []}]}]});*/
+        {type: 'typeConstructor', text: 'Bool', children: []}]}]});
 
   t.end();
 });
