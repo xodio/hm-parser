@@ -175,13 +175,13 @@ Tape.test('classConstraints', t => {
 
   t.end();
 });
-
+*/
 Tape.test('typevar', t => {
   t.deepEqual(HMP.typevar('a'),
     {type: 'typevar', text: 'a', children: []});
   t.end();
 });
-
+/*
 Tape.test('thunk', t => {
   t.deepEqual(HMP.thunk('() -> Maybe a'),
     {type: 'function', text: '', children: [
