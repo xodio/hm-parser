@@ -120,3 +120,13 @@ uncurriedFunctionParams -> "(" _ type (_ "," _ type):+ _ ")" {%
     children: [data[2]].concat(R.pluck(3)(data[3])),
   })
 %}
+
+# Method ======================================================================
+
+method -> typeConstructor _ "~>" _ functionArg (_ "->" _ functionArg):* {%
+  data => ({
+    type: 'method',
+    text: '',
+    children: [data[0], data[4]].concat(R.pluck(3)(data[5]))
+  })
+%}
