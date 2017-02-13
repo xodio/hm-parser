@@ -15,3 +15,4 @@ const parse = R.curry(function parse(start, s) {
 export const typeConstructor = parse('typeConstructor');
 export const typevar = parse('typevar');
 export const constrainedType = parse('constrainedType');
+export const list = parse('list');

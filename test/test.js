@@ -313,7 +313,7 @@ Tape.test('function', t => {
       {type: 'typevar', text: 'b', children: []}]});
   t.end();
 });
-
+*/
 Tape.test('list', t => {
   t.deepEqual(HMP.list('[[Integer]]'),
     {type: 'list', text: '', children: [
@@ -329,15 +329,15 @@ Tape.test('list', t => {
       {type: 'typeConstructor', text: 'Maybe', children: [
         {type: 'typevar', text: 'a', children: []}]}]});
 
-  t.deepEqual(HMP.list('[a -> Bool]'),
+  /*t.deepEqual(HMP.list('[a -> Bool]'),
     {type: 'list', text: '', children: [
       {type: 'function', text: '', children: [
         {type: 'typevar', text: 'a', children: []},
-        {type: 'typeConstructor', text: 'Bool', children: []}]}]});
+        {type: 'typeConstructor', text: 'Bool', children: []}]}]});*/
 
   t.end();
 });
-*/
+
 Tape.test('typeConstructor', t => {
   t.deepEqual(HMP.typeConstructor('Maybe (Either a (Maybe b))'),
     {type: 'typeConstructor', text: 'Maybe', children: [

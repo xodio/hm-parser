@@ -6,6 +6,7 @@
 
 type ->
     typevar
+  | list
   | typeConstructor {% data => data[0] %}
 
 typevar -> lowId {%
@@ -75,3 +76,13 @@ constrainedType -> lowId (__ constrainedTypeArg):* {%
 %}
 
 wrappedConstrainedType -> "(" _ constrainedType _ ")" {% data => data[2] %}
+
+# List ========================================================================
+
+list -> "[" _ type _ "]" {%
+  data => ({
+    type: 'list',
+    text: '',
+    children: R.flatten([ data[2] ]),
+  })
+%}
