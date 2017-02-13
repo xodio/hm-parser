@@ -24,3 +24,18 @@ export const record = parseFrom('record');
 export const name = parseFrom('name');
 export const classConstraints = parseFrom('classConstraints');
 export const parse = parseFrom('declaration');
+
+export default {
+  typeConstructor,
+  typevar,
+  constrainedType,
+  list,
+  fn,
+  uncurriedFunction,
+  method,
+  thunk,
+  record,
+  name,
+  classConstraints,
+  parse,
+};
