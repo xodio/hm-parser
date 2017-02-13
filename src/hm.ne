@@ -39,6 +39,7 @@ typeConstructor -> capId (__ typeConstructorArg):* {%
 
 typeConstructorArg ->
   ( typevar
+  | list
   | wrappedConstrainedType
   | nullaryTypeConstructor
   | wrappedTypeConstructor
@@ -148,3 +149,23 @@ thunkParenthesis -> "(" _ ")" {%
     children: [],
   })
 %}
+
+# Record =====================================================================
+
+record -> "{" _ recordField (_ "," _ recordField):* _ "}" {%
+  data => ({
+    type: 'record',
+    text: '',
+    children: [data[2]].concat(R.pluck(3)(data[3])),
+  })
+%}
+
+recordField -> recordFieldName _ "::" _ type {%
+  data => ({
+    type: 'field',
+    text: data[0],
+    children: [data[4]],
+  })
+%}
+
+recordFieldName -> [A-Za-z0-9_]:+ {% data => R.join('', data[0]) %}

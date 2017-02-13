@@ -20,3 +20,4 @@ export const fn = parse('function');
 export const uncurriedFunction = parse('uncurriedFunction');
 export const method = parse('method');
 export const thunk = parse('thunk');
+export const record = parse('record');

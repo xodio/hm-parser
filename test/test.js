@@ -213,7 +213,7 @@ Tape.test('constrainedType', t => {
 
   t.end();
 });
-/*
+
 Tape.test('record', t => {
   t.deepEqual(HMP.record('{ foo :: Integer, bar :: Maybe [a] }'),
     {type: 'record', text: '', children: [
@@ -231,7 +231,7 @@ Tape.test('record', t => {
 
   t.end();
 });
-*/
+
 Tape.test('uncurriedFunction', t => {
   t.deepEqual(HMP.uncurriedFunction('(a, b) -> Integer'),
     {type: 'uncurriedFunction', text: '', children: [
