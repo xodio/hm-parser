@@ -3,7 +3,7 @@ import R from 'ramda';
 import nearley from 'nearley';
 import grammar from './grammar';
 
-const parse = R.curry(function parse(start, s) {
+const parseFrom = R.curry(function parseFrom(start, s) {
   const parser = new nearley.Parser(
     grammar.ParserRules,
     start
@@ -12,14 +12,15 @@ const parse = R.curry(function parse(start, s) {
   return parser.feed(s).results[0];
 });
 
-export const typeConstructor = parse('typeConstructor');
-export const typevar = parse('typevar');
-export const constrainedType = parse('constrainedType');
-export const list = parse('list');
-export const fn = parse('function');
-export const uncurriedFunction = parse('uncurriedFunction');
-export const method = parse('method');
-export const thunk = parse('thunk');
-export const record = parse('record');
-export const name = parse('name');
-export const classConstraints = parse('classConstraints');
+export const typeConstructor = parseFrom('typeConstructor');
+export const typevar = parseFrom('typevar');
+export const constrainedType = parseFrom('constrainedType');
+export const list = parseFrom('list');
+export const fn = parseFrom('function');
+export const uncurriedFunction = parseFrom('uncurriedFunction');
+export const method = parseFrom('method');
+export const thunk = parseFrom('thunk');
+export const record = parseFrom('record');
+export const name = parseFrom('name');
+export const classConstraints = parseFrom('classConstraints');
+export const parse = parseFrom('declaration');

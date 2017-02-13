@@ -4,6 +4,14 @@
   const R = require('ramda');
 %}
 
+declaration -> name _ "::" _ type {%
+  data => ({
+    name: data[0],
+    constraints: [],
+    type: data[4],
+  })
+%}
+
 type ->
   ( typevar
   | list
