@@ -1,6 +1,6 @@
 {
   "name": "hm-parser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": "https://github.com/xodio/hm-parser",
   "description": "A parser for Hidnley Milner notations",
   "main": "dist/index.js",
