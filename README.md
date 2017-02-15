@@ -15,7 +15,32 @@ that use another version of `babel-polyfill`.
 Usage
 -----
 
-See [tests](test/test.js) for examples.
+Install with:
+
+    $ yarn add hm-parser
+    # or
+    $ npm install hm-parser
+
+Then:
+
+```javascript
+
+HMP = require('hm-parser');
+
+HMP.parse('hello :: a -> Maybe a');
+
+// returns:
+// {
+//   name: 'hello',
+//   constraints: [],
+//   type:
+//     {type: 'function', text: '', children: [
+//       {type: 'typevar', text: 'a', children: []},
+//       {type: 'typeConstructor', text: 'Maybe', children: [
+//         {type: 'typevar', text: 'a', children: []}]}]}
+```
+
+See [tests](test/test.js) for more examples.
 
 License
 -------
