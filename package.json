@@ -1,15 +1,16 @@
 {
   "name": "hm-parser",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "repository": "https://github.com/xodio/hm-parser",
+  "description": "A parser for Hidnley Milner notations",
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src/ -d dist/ && nearleyc src/hm.ne -o dist/grammar.js",
     "test": "tape test/test.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "XOD LLC",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
