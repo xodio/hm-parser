@@ -1,6 +1,9 @@
 var Tape = require('tape');
 var HMP = require('../dist/index');
 
+// Copy of tests as is from:
+// https://github.com/kedashoe/hindley-milner-parser-js/blob/master/test/test.js
+
 Tape.test('parse', t => {
   t.deepEqual(
     HMP.parse('hello :: a -> Maybe a'), {
