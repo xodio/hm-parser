@@ -17,6 +17,7 @@ type ->
   | list
   | typeConstructor
   | function
+  | thunk
   | uncurriedFunction
   | constrainedType
   | method
