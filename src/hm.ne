@@ -101,7 +101,7 @@ constrainedTypeArg ->
   | wrappedConstrainedType
   ) {% data => data[0][0] %}
 
-constrainedType -> lowId (__ constrainedTypeArg):* {%
+constrainedType -> lowId (__ constrainedTypeArg):+ {%
   data => ({
     type: 'constrainedType',
     text: data[0],
