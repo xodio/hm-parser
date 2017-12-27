@@ -1,9 +1,9 @@
 
-import R from 'ramda';
+import { curry } from 'ramda';
 import nearley from 'nearley';
 import grammar from './grammar';
 
-const parseFrom = R.curry(function parseFrom(start, s) {
+const parseFrom = curry(function parseFrom(start, s) {
   const parser = new nearley.Parser(
     grammar.ParserRules,
     start
